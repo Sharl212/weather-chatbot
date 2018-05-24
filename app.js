@@ -9,19 +9,7 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// app.use('/weatherhook', (req, res) => {
+app.use('/weatherhook', (req, res) => {
   exports.weatherWebhook = (req, res) => {
     let city = req.body.queryResult.parameters['weather'];
 
@@ -67,7 +55,7 @@ app.use('/users', usersRouter);
       });
     };
   };
-// });
+});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('server is running');
