@@ -9,8 +9,8 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
-app.use('/weatherhook', (req, res) => {
-  exports.weatherWebhook = (req, res) => {
+// app.use('/weatherhook', (req, res) => {
+  exports.weatherhook = (req, res) => {
     let city = req.body.queryResult.parameters['weather'];
 
     let date = '';
@@ -55,7 +55,7 @@ app.use('/weatherhook', (req, res) => {
       });
     };
   };
-});
+// });
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('server is running');
